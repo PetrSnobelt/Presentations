@@ -1,0 +1,189 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GraphQL</title>
+
+		<meta name="author" content="Petr Šnobelt">
+
+		<base href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/' />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<link rel="shortcut icon" href="http://graphql.org/img/favicon.png"/>
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section
+					data-background-image="http://graphql.org/img/logo.svg"
+					data-background-size="70%">
+				</section>
+				<section>
+					<h1>GraphQL</h1>
+					<blockquote>
+						<small>
+							GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+						</small>
+					</blockquote>
+					<p>
+						<small><a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> / <a href="http://twitter.com/petrsnobelt">@petrsnobelt</a></small>
+					</p>
+				</section>
+
+                <section>
+                    <h2>GraphQL facts</h2>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Opensource</li>
+                        <li>Initial public release in 2012</li>
+						<li>current release 0.11.7</li>
+						<li><a href='https://github.com/graphql/graphql-js'>https://github.com/graphql/graphql-js</a></li>
+                    </ul>
+                </section>
+
+				<section>
+                    <h3>Základní charakteristika</h3>
+                    <ul>
+						<li>NewAge API 😀</li>
+                        <li>StrongTyped</li>
+						<li>DB/Data source independent</li>
+                    </ul>
+                </section>
+
+				<section>
+					<section>
+						<h3>React nepoužít RestAPI?</h3>
+						<ol>
+							<li>multiple requests</li>
+							<li>overfetching</li>
+							<li>api versioning,<br />
+								documentation</li>
+							</ul>
+							</li>
+							<li>realtime (websockets)</li>
+						</ol>
+					</section>
+
+					<section>
+						<h3>#1 multiple requests</h3>
+						<p>Je možné skládat více dotazů do jednoho</p>
+					</section>
+
+					<section>
+						<h3>#2 overfetching</h3>
+						<p>Kient si může vybrat které data chce</p>
+					</section>
+
+					<section>
+						<h3>#3 api versioning,<br />
+							documentation</h3>
+						<p>
+							Api je dokumentované pomocí typů a komentářů
+						</p>
+					</section>
+
+					<section>
+						<h3>#4 realtime<br />
+							subscriptions</h3>
+						<p>
+							Je možné se přihlásit k odběru dat pomocí websockets
+						</p>
+					</section>
+				</section>
+
+                <section>
+                    <h2>Problémy graphQL</h2>
+                    <ul>
+                        <li>mladá technologie</li>
+						<li>problémy/nevyužití s http cachování<br /> (používá POST)</li>
+						<li><strong>Query N+1 problém </strong> <br>
+							řešením jsou <a href='https://github.com/facebook/dataloader'>dataloader</a></li>
+                    </ul>
+                </section>
+
+				<section>
+					<h2>Tools</h2>
+					<ul>
+						<li><a href='https://github.com/graphql/graphiql'>Graph<em>i</em>QL</a></li>
+						<li><a href='https://github.com/apollographql/apollo-client-devtools'>Apollo client devtools</a></li>
+						<li><a href='https://github.com/postgraphql/postgraphql'>postgraphql</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Firmy využívající graphQL</h3>
+					<ul>
+						<li>Twitter, GitHub, Facebook, Ipex 😎</li>
+						<li><a href='http://graphql.org/users/'>reference na webu</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Stojí to za to?</h3>
+					<ul>
+						<li>as always - it depend on project</li>
+						<li>in our case yes</li>
+						<li>...but you should try it</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Děkuji za pozornost</h2>
+                    <p>Otázky?</p>
+                    <br />
+					<h4>Petr Šnobelt <br /> petr.snobelt@gmail.com <br /> @petrsnobelt</h4>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>

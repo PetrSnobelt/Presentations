@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>Backend as a service</title>
+    <meta name="author" content="Petr Šnobelt">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">    
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1 id="backendasaservice"><small>Mobile</small> Backend<br /> as a Service</h1>
+                <p>
+                    <small><a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> / <a href="http://twitter.com/petrsnobelt">@petrsnobelt</a></small>
+                </p>
+                <blockquote>
+                    BaaS is an approach for providing web and mobile app developers with a way to connect their applications to backend cloud storage and processing while also providing common features.
+                </blockquote>
+            </section>
+            <section>
+                <h2>Pros</h2>
+                <ul>
+                    <li>Faster on Market/Lower Initial Cost</li>
+                    <li>Someone take care about infrastructure<ul><li>(patching, upgrading)</li></ul></li>
+                    <li><strong>Proof of concept</strong></li>
+                </ul>
+            </section>
+            <section>
+                <section id="frafments">
+                    <h3 id="requirements-for-baas">Requirements for BaaS</h3>
+                    <ol>
+                        <li class="fragment">User Management <strong>and ACLs</strong></li>
+                        <li class="fragment">Login via various OAuth (Google, FB, Twitter)</li>
+                        <li class="fragment">DaaS (Database as a Service)</li>
+                        <li class="fragment">File Storage </li>
+                        <li class="fragment">Push Notification</li>                        
+                        <li class="fragment">Run Custom Business Logic</li>
+                        <li class="fragment">Send Emails</li>
+                        <li class="fragment">Real-time data synchronization</li>
+                        <li class="fragment">Offline data caching, synchronization</li>
+                        <li class="fragment">Security and Data Encryption </li>
+                    </ol>
+                </section>
+                <section>
+                    <h4 id="nice-to-have">Nice to have</h4>
+                    <ul>
+                        <li>Analytics</li>
+                        <li>Automatic Backup </li>
+                        <li>Hosting with CDN</li>
+                        <li>Support for Payment gateways</li>
+                        <li>Integration with 3rd party data/services</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h2 id="adoption">Cons/Adoption</h2>
+                <ul>
+                    <li class="fragment">vendor trust</li>
+                    <li class="fragment">vendor lock</li>
+                    <li class="fragment">customization</li>
+                    <li class="fragment"><strong>resistance to give up their own toys by Web developers</strong></li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h3 id="opensource">OpenSource</h3>
+                    <blockquote>Opensource solutions can be installed on own hardware or deployed to cloud</blockquote>
+                </section>
+                <section>
+                    <h2>appache usergrid</h2>
+                    <p><a href="http://usergrid.incubator.apache.org/">usergrid.incubator.apache.org</a></p>
+                    <blockquote>
+                        Complete SDKs for iOS, Android, HTML5/JS, Node.js, Ruby, Java, .NET, and PHP. <br />
+                        Open source since 2011.
+                    </blockquote>
+                </section>
+                <section>
+                     <h2><a href="http://loopback.io/">loopback.io</a></h2>
+                    <blockquote>node.js framework for creating apis and easily connecting to backend data sources.</blockquote>
+                </section>
+                <section>
+                    <h2><a href="http://deployd.com/">deployd.com</a></h2>
+                    <blockquote>
+                        based on MongoDB and Node.js providing a JavaScript API
+                    </blockquote>
+                    <p>
+                        v0.6.10 preview<br />
+                        nice short (6 mins) introducing video
+                    </p>
+                </section>
+                <section>
+                    <h2>Others</h2>
+                    <p>
+                        <a href="http://helios.io/">helios.io</a> - Ruby, Postgress<br />
+                        <a href="http://www.baasbox.com/">baasbox.com</a> SDKs for iOS, Android but Javascript ("comming soon")<br />
+                        <a href="http://www.icapps.com/open-source-alternative-for-parse/">open source alternative for parse.com</a>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3 id="komercni-reseni">Commerce solutions</h3>
+                <blockquote>
+                    <p>Most providers have free plan to try</p>
+                </blockquote>
+                <ul>
+                    <li><a href="http://devcenter.kinvey.com/">kinvey.com</a> (salesforce.com)</li>
+                    <li><a href="https://www.firebase.com">firebase.com</a> (joining google)</li>
+                    <li><a href="https://parse.com">parse.com</a></li>
+                    <li><a href="https://backendless.com/pricing/">backendless.com</a></li>
+                    <li>...and lot's of others</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2 id="examples">Examples I/III</h2>
+                    <h3>firebase</h3>
+                    <p>
+                        <a href="http://jsfiddle.net/AbtDf/14/">jsfiddle chat</a><br />
+                        <a href="http://jsfiddle.net/katowulf/QnUpb/">jsfiddle tree</a>
+                        <a href="https://www.firebase.com/docs/web/quickstart.html">quickstart</a>
+                        <!--
+                            $('#clear').click (e) ->
+                              messages.set("");
+                              $('#messages').test('--cleared--')  
+                        -->
+                    </p>
+                </section>
+                <section>
+                    <h2>Examples II/III</h2>
+                    <h3>parse.com</h3>
+                    <blockquote>not well choosen name - try google something :-(</blockquote>
+                    <pre>
+                        <code class="javascript" contenteditable style="font-size: 18px;">
+                        $.ajax({
+                            headers: { "X-Parse-Application-Id": "---YOUR APP ID---",
+                                       "X-Parse-REST-API-Key": "--- YOUR KEY ---" },
+                            type: "POST",
+                            url: "https://api.parse.com/1/" + "classes/Test",
+                            data: '{ "name": "Alan Turing", 
+                                     "birthday": "June 23, 1912" }',
+                            success: function () { },
+                            dataType: "json",
+                            contentType: "application/json"
+                        });
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <h2>Examples III/III</h2>
+                    <h3>UI of firebase and parse.com</h3>
+                </section>
+            </section>
+            <section>
+                <h2>Sources</h2>
+                <ul>
+                  <li><a href="http://devchat.tv/js-jabber/129-jsj-baas-with-ryan-done"> JavaScript Jabber - BaaS with Ryan Done</a></li>
+                  <li><a href="http://hood.ie/">hood.ie</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+            ]
+        });
+
+    </script>
+
+</body>
+</html>

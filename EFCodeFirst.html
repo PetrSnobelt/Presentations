@@ -1,0 +1,312 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Entity Framework Code First</title>
+
+		<meta name="author" content="Petr Šnobelt">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+				
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Entity Framework<br />Code First</h1>
+					<h3>ORM mapper z dílny Microsoftu</h3>
+					<p>
+						<small><a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> / <a href="http://twitter.com/petrsnobelt">@petrsnobelt</a></small>
+					</p>
+				</section>
+
+                <section>
+                    <h2>Další DAL od Microsoftu!?</h2>                    
+                    <ul>
+                        <li>ADO.NET
+                            <ul><li>DataReader, DataTables</li></ul></li>
+                        <li>DataSets</li>
+                        <li>TypedDataset</li>
+                        <li>SqlDataSource</li>
+                    </ul> 
+                    <img style="float:right;"
+                         src="http://0-media-cdn.foolz.us/ffuuka/board/tg/image/1356/70/1356708792280.jpg" width="250" />
+                </section>
+
+				<section>
+					<h2>Microsoft ORM mapper</h2>
+					<blockquote>
+                        <small>
+						Entity Framework (EF) is an object-relational mapper that enables .NET developers to work with relational data using domain-specific objects.
+                        It eliminates the need for most of the data-access code that developers usually need to write.
+                        </small>
+					</blockquote>
+                    <ul>
+						<li>přímá konkurence NHibernate</li>
+						<li>první pokus LinqToSQL 2007</li>
+						<li>první verze EntityFramework 2008</li>
+                        <li><strong>EntityFramework Code First 2011</strong></li>
+						<li>EntityFramework v6.1 2013</li>
+					</ul>	
+                    <aside class="notes">
+						Jak se zrodil Entity Framework ...
+					</aside>
+                   <!-- <div class="image">
+                        <img class="image" src="http://assets-s3.mensjournal.com/img/essential/the-led-bulb-advantage/618_348_the-led-bulb-advantage.jpg"				/>
+                    </div>-->
+				</section>
+				
+                <section>
+                    <h2>Development Stack</h2>
+                    <ul>
+                        <li>DAL
+                            <ul><li>Entity Framework</li></ul></li>
+                        <li>Bussiness Logic
+                            <ul><li>ASP.NET WebAPI</li></ul></li>
+                        <li>UI
+                            <ul><li>ExtJS (Ext.NET) pro LOB aplikace</li>
+                            <li>PureJS, Bootstrap, ReactJS pro specialitky a mobilní věci</li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </section>
+
+				<section>
+					<section>
+						<h2>Výhody I/II</h2>
+                        
+						<a href="#" class="image navigate-down" style="float:right;">
+							<img width="184" height="243" src="http://pressroom.eu/resources/images/vyhody-portalu.jpg" alt="Down arrow">
+						</a>
+                        <br />
+                        <ul>
+                            <li>Code/Type Safety, Refaktoring</li>
+                            <li>Rapid application development and prototyping</li>
+                            <li>Unit testing</li>
+                            <li>Open source</li>
+                            <li>Conventions over configurations</li>
+                            <li>Support for legacy db</li>
+                        </ul>						
+					</section>
+					<section>
+						<h2>Výhody II/II</h2>
+                        <ul>
+                        <li>supported and developed by Microsoft (#EFHelp)
+                        <ul><li>zlepšuje se rozšiřitelnost (<a href="https://entityframework.codeplex.com/wikipage?title=Interception">interceptory</a> ve verzi 6)</li></ul></li>
+                        <li>funguje výborně s ostatními ms technologiemi
+                        <ul>
+                            <li>asp.net mvc, webapi (používá stejné data annotations)   </li>
+                            <li><a href="http://www.asp.net/identity">nový identity framework</a></li>
+                            <li><a href="http://www.odata.org/">odata</a></li>
+                            <li>MS SQL</li></ul></li>
+                        <li>existují i providery pro Oracle, Firebird, NuoDB, MySQL</li>
+                        </ul>
+					</section>					
+				</section>
+
+				<section>
+				<section>
+					<h2>Použité technologie a návrhové vzory</h2>
+                    <ul>
+                    <li>Nevyužívá Repository ani ActiveRecord</li>
+                    <li>Využívá Unit of work</li>                    
+                    <li>Lazy load</li>
+                    <li><a href="#" class="navigate-down"><strong>LINQ</strong></a></li>
+                    </ul>
+				</section>
+				<section>
+					<h2>LINQ</h2>				
+                    <p>Language INtegrated Query - je silně typový jazyk pro dotazování </p>
+                    <ul>
+                        <li>Nejlepší věc v .NETu (uveden v 3.5) za poslední dobu</li>
+                        <li>Koncept z funkcionálního jazyka
+                            <ul>
+                                <li>neříkáme jak, ale co chceme udělat</li>
+                                <li>vyšší výkon díky paralelizaci a zlepšení kompilátoru</li>
+                            </ul></li>
+                        <li>Nehrozí SQL injection</li>
+                        <li>LazyLoad, Deferred execution by default</li>
+                        <li>Jednoduché úkoly třízení, selekce</li>
+                        <li><a href="http://msdn.microsoft.com/en-us/library/vstudio/bb546133.aspx">Nalezení duplicitních souborů</a></li>
+                        <li><a href="http://blogs.msdn.com/b/lukeh/archive/2007/10/01/taking-linq-to-objects-to-extremes-a-fully-linqified-raytracer.aspx">A fully LINQified RayTracer</a></li>
+                        <li>Linq to everything
+                            <ul><li>Linq To Objects, Excel, CSV, ActiveDirextory, XML, Lucene, JSON</li></ul></li>
+                    </ul>
+                    <!--<a href="#" class="image navigate-down">
+                        <img width="200" src="http://linqinaction.net/photos/main/images/2422/original.aspx" />
+                    </a>-->
+				</section>
+                </section>
+
+				<section>
+					<h2>Způsoby konfigurace</h2>
+					<ul>
+                        <li>Attributes</li>                        
+                        <li>FluentAPI</li>
+                        <li>Custom Conventions</li>
+                        <li>Konfigurace
+                            <ul><li>web.config, app.config</li></ul></li>
+                        <li>NHibernate - xml konfigurace</li>
+                        </ul>
+				</section>
+
+                <section>
+                    <section style="color:black;"                             
+                             data-background="http://sci-bc.ca/wp-content/uploads/2013/06/hands-up.jpg"
+                             data-background-color="black">
+                        <h2 style="color:black;">Demo</h2>
+                        <p>Co takhle demo?</p>
+                    </section>
+                
+                    <section id="fragments">
+                        <h2>Demo</h2>
+                        <!--<p>Hit the next arrow...</p>-->
+                        <!--<p class="fragment">... to step through ...</p>-->
+                        <ol>
+                            <li class="fragment">všechno jde naházet do jednoho projektu</li>
+                            <li class="fragment">ale my si to pěkně rozdělíme do projektů podle jejich určení</li>
+                            <li class="fragment">pokusím se o TDD</li>
+                        </ol>
+                    </section>
+
+                    <section data-background="http://images5.fanpop.com/image/photos/27300000/It-s-Show-Time-victorias-secret-27304570-1024-768.jpg">
+                    </section>
+
+                    <section>
+                        <h2>Notes</h2>
+                        <ul>
+                            <li>Instalace Packages EntityFramework.SqlServerCompact</li>
+                            <li>První test - uložení blogu</li>
+                            <li>Uprava app.config - přidání connection stringu</li>
+                            <li>
+                                Zobrazení vygenerované databáze
+                                <ul>
+                                    <li>Existuje tabulka Posts i přesto že není v DataContextu</li>
+                                    <li>nvarchar(max), nullable</li>
+                                </ul>
+                            </li>
+                            <li>Druhý test - prázdný blog</li>
+                            <li>Změnila se databáze - initializer</li>
+                            <li>Expected exception ...</li>
+                            <li>Uprava StringLength</li>
+                            <li>Ukázka fluentapi</li>
+                            <li>BlogPost - Initializer, virtual (proxy)</li>
+                            <li>
+                                BeyondBasics
+                                <ul>
+                                    <li>přidáme si nějaké data navíc</li>
+                                    <li>logging sql</li>
+                                    <li>deferred execution</li>
+                                    <li>egger loading</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>                    
+                </section>
+
+				<section>
+                    <p>Co se do dema nevešlo</p>
+					<h2>Změny schema databáze</h2>
+                    <ul>
+                        <li>Ve fázi prototypu/testování DdInitializer</li>
+                        <li>Po nasazení - CodeFirst Migrations</li>
+                        <li>AutoMapper pro přenášení mezi DAL a BO</li>
+                    </ul>
+				</section>
+
+                <section>
+                    <section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
+                        <h2>Problémy</h2>
+                        <ul>
+                            <li>
+                                Linq kod je předán provideru a ten z něj vytvoří nativní dotaz
+                                <ul><li>provider může vyhodit exception - např String.Format</li></ul>
+                            </li>
+                            <li>LazyLoad - dobrý sluha ...</li>
+                            <li>Nelze jednoduše napsat znovupoužitelné dotazy na kalkulované vlastnosti</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Alternativy, výkon</h2>
+                        <p class="fragment">EF není nejrychlejší ORM mapper pro .NET</p>
+                        <p class="fragment">výkon se dá zlepšit použitím storedprocedures</p>
+                        <p class="fragment">pokud jdete po výkonu zkuste Daper, PetaPoco</p>
+                        <p class="fragment">pokud chcete něco jednoduchého massive</p>
+                    </section>
+                </section>
+
+				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
+					<h2>Resumé </h2>
+                    <ul>
+                    <li>Hodí se na dlouhodobé projekty 
+                    <ul>
+                        <li>oceníte migrace</li>
+                        <li>typovou bezpečnost - refaktoring</li>
+                        <li>testovatelnost</li>
+                    </ul></li>
+                    <li>V kombinaci s WebApi lze vytvořit REST api, které umí výborně spolupracovat s js knihovnami
+                    <ul><li>Angular (Google)</li><li> ExtJS (Sencha)</li><li>ReactJS (facebook)</li></ul></li>
+                    </ul>
+				</section>					
+				
+				<section>
+					<h2>Děkuji za pozornost</h2>
+                    <p>Otázky?</p>
+                    <br />
+					<h4>Petr Šnobelt <br /> petr.snobelt@gmail.com <br /> @petrsnobelt</h4>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

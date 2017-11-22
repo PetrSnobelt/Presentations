@@ -1,0 +1,185 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>React</title>
+
+		<meta name="author" content="Petr Šnobelt">
+
+		<base href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/' />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>React</h1>
+					<h3>A LIBRARY FOR BUILDING USER INTERFACES</h3>
+					<p>
+						<small><a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> / <a href="http://twitter.com/petrsnobelt">@petrsnobelt</a></small>
+					</p>
+				</section>
+
+                <section>
+                    <h2>React facts</h2>
+                    <ul>
+                        <li>Facebook, Instagram</li>
+                        <li>Opensource</li>
+                        <li>Initial public release May 29, 2013</li>
+						<li>current release 0.8</li>
+                    </ul>
+                </section>
+
+				<section>
+                    <h2>Základní pilíře</h2>
+                    <ul>
+                        <li>React je knihovna pro <strong>UI</strong></li>
+						<li style="display:none;">Komponenty místo šablon</li>
+                        <li>Re-rendering + reakce na události</li>
+						<li>Virtuální DOM</li>
+                    </ul>
+                </section>
+
+				<section>
+					<h2>React nepoužívá šablony?!</h2>
+					<code>
+					( like {{> }} and {{# each}})
+					</code>
+					<br><br>
+					<p>
+					Šablony často vytvářejí vlastní "jazyk"<br>
+					React používá javascript
+					</p>
+                </section>
+
+				<section>
+					<h2>React komponenty</h2>
+					<blockquote>
+                        Zobrazovací logika a markup patří k sobě
+					</blockquote>
+					<ul>
+                        <li>Znovupoužitelné</li>
+                        <li>Dají se skládat do větších celků (Composable)</li>
+                        <li>Testovatelné</li>
+                    </ul>
+               </section>
+
+                <section>
+                    <h2>Re-render při změně dat</h2>
+                    <ul>
+                        <li>Změny v datech přinášejí hodně problémů</li>
+                        <li>Vzpomeňte na web bez JS - "Just refresh the page"</li>
+                        <li>Překreslení při jakékoliv změně tvorbu UI dramaticky zjednoduší
+							<ul><li>Žádná magie (databinding, dirtychecking, práce s DOM) </li></ul>
+						</li>
+                    </ul>
+                </section>
+
+				<section>
+					<h2>Browser DOM vs Virtual DOM</h2>
+					<p></p>
+					<ul>
+						<li>Není možné při každé změně zahodit a znovu vytvořit DOM</li>
+						<li>Bylo by to pomalé a přijdete o stav formulářů a pozici ve stránce</li>
+						<li>Virtual DOM umožňuje <strong>rychlé</strong> překreslení při každé změně</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Při každé změně dat</h2>
+					<ul>
+					<li>React vytvoří nový virtuální DOM</li>
+					<li>... porovná jej s předchozím</li>
+					<li>... najde rozdíly s předchozí iterací</li>
+					<li>... přidá je do fronty změn</li>
+					<li>... a v dávce provede změny</li>
+					</ul>
+					<br><br>
+					<p>Velmi podobný koncept využívá engine z Doom III</p>
+				</section>
+
+				<section>
+					<h2>Je to fakt rychlé?</h2>
+                    <p><a href="http://www.petehunt.net/wolfenstein3D-react/wolf3d.html">Wolfestein3D</a></p>
+					<p><a href="https://github.com/petehunt/wolfenstein3D-react">Github code</a></p>
+				</section>
+
+				<section>
+					<h2>Poznámky </h2>
+                    <ul>
+					<li>JSX preprocessor</li>
+					<li>SVG, VML support</li>
+					<li><a href="http://skulbuny.com/2013/10/31/react-vs-angular/">React vs Angular</a></li>
+					<li>Server side rendering</li>
+					<li>Server side changes</li>
+					<li>Funkcionální koncept - existuje klon pro Clojure script</li>
+				</section>
+
+				<section>
+					<h2>Shrnutí</h2>
+					<ul>
+					<li>Komponenty místo šablon</li>
+					<li>Znovu vykreslení místo změny</li>
+					<li>Virtual DOM je jednoduchý, rychlý, testovatelný</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Děkuji za pozornost</h2>
+                    <p>Otázky?</p>
+                    <br />
+					<h4>Petr Šnobelt <br /> petr.snobelt@gmail.com <br /> @petrsnobelt</h4>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>
