@@ -1,223 +1,270 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>GraphQL</title>
+	<title>GraphQL</title>
 
-		<meta name="author" content="Petr Šnobelt">
+	<meta name="author" content="Petr Šnobelt">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/night.css" id="theme">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/night.css" id="theme">
 
-		<link rel="shortcut icon" href="http://graphql.org/img/favicon.png"/>
+	<link rel="shortcut icon" href="http://graphql.org/img/favicon.png" />
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
-	</head>
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+	</script>
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+	<div class="reveal">
 
-			<div class="slides">
-				<section
-					data-background-image="https://graphql.org/img/logo.svg"
-					data-background-size="70%">
+		<div class="slides">
+			<section data-background-image="http://graphql.org/img/logo.svg" data-background-size="70%">
+			</section>
+
+			<section>
+				<h1>GraphQL</h1>
+				<blockquote>
+					<small>
+						GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides
+						a complete and understandable description of the data in your API, gives clients the power to ask for exactly what
+						they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+					</small>
+				</blockquote>
+				<p>
+					<small>
+						<a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> /
+						<a href="http://twitter.com/petrsnobelt">@petrsnobelt</a>
+					</small>
+				</p>
+			</section>
+
+			<section>
+				<h2>Agenda</h2>
+				<ul>
+					<li>GraphQL introduction</li>
+					<li>Ipex journey</li>
+					<li>Samples</li>
+					<li>Advanced features</li>
+					<li>Discussion</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>GraphQL facts</h2>
+				<ul>
+					<li>Developed internally by Facebook in 2012</li>
+					<li>Initial public release in 2015</li>
+					<li>Opensource</li>
+					<li>current release 0.12.3 (Dec 17, 2017)</li>
+					<li>
+						<a href='https://github.com/graphql/graphql-js'>https://github.com/graphql/graphql-js</a>
+					</li>
+				</ul>
+
+				<aside class="notes">
+					Note Netflix/falcor.
+				</aside>
+			</section>
+
+			<section>
+				<section>
+					<h3>Základní charakteristika</h3>
+					<ul>
+						<li>NewAge API 😀</li>
+						<li>StrongTyped</li>
+						<li>DB/Data source independent</li>
+						<li>GraphQL servers are available for all major languages</li>
+					</ul>
 				</section>
 				<section>
-					<h1>GraphQL</h1>
-					<blockquote>
-						<small>
-							GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
-						</small>
-					</blockquote>
+					<h3>Allows clients to dictate what data is needed</h3>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>RestAPI problems</h3>
+					<ol>
+						<li>multiple requests</li>
+						<li>overfetching</li>
+						<li>documentation</li>
+						</ul>
+						</li>
+						<li>realtime (websockets)</li>
+					</ol>
+				</section>
+
+				<section>
+					<h3>#1 multiple requests</h3>
+					<p>Je možné skládat více dotazů do jednoho</p>
+				</section>
+
+				<section>
+					<h3>#2 overfetching</h3>
+					<p>Kient si může vybrat které data chce</p>
+				</section>
+
+				<section>
+					<h3>#3 documentation</h3>
 					<p>
-						<small><a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> / <a href="http://twitter.com/petrsnobelt">@petrsnobelt</a></small>
+						Api je dokumentované pomocí typů a komentářů
+					</p>
+					<p>Protože si klient vybírá, jaké data chce není tak velká potřeba api verzovat</p>
+				</section>
+
+				<section>
+					<h3>#4 realtime
+						<br /> subscriptions
+					</h3>
+					<p>
+						Je možné se přihlásit k odběru dat pomocí websockets
 					</p>
 				</section>
+			</section>
 
-				<section>
-						<h2>GraphQL facts</h2>
-						<ul>
-								<li>Developed internally by Facebook in 2012</li>
-								<li>Initial public release in 2015</li>
-								<li>Opensource</li>
-								<li>current release 0.12.3 (Dec 17, 2017)</li>
-								<li><a href='https://github.com/graphql/graphql-js'>https://github.com/graphql/graphql-js</a></li>
-						</ul>
+			<section>
+				<h3>Firmy využívající graphQL</h3>
+				<ul>
+					<li>Twitter, GitHub, Facebook, Ipex 😎</li>
+					<li>
+						<a href='http://graphql.org/users/'>reference na webu</a>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>IPEX way to graphQL</h2>
+				<ol>
+					<li class="fragment">Internal workshop</li>
+					<li class="fragment">Basic skeleton tested using GraphiQL</li>
+					<li class="fragment">Subscriptions</li>
+					<li class="fragment">Use storybook for components</li>
+					<li class="fragment">Win</li>
+				</ol>
+
+				<aside class="notes">
+					<ul>
+						<li>
+							Internal workshop - graphql or native rethingdb client
+							<ul>
+								<li>We like graphql</li>
+								<li>Rethinkdb future is hmm…</li>
+							</ul>
+						</li>
+						<li>
+							Create basic skeleton of first functions
+							<ul>
+								<li>Velký důraz na mutace</li>
+								<li>Different clients to different instances</li>
+								<li>Try graphql in graphiql</li>
+								<li>It helps backend developers try what they do</li>
+							</ul>
+						</li>
+						<li>
+							Subscriptions
+							<ul>
+								<li>Not much used, but critical for us</li>
+								<li>2 options
+									<ul>
+										<li>Notify “data is changed only”
+											<ul>
+												<li>Simple but “slower” and can cause trouble for backend for too many requests</li>
+											</ul>
+										</li>
+										<li>Send data with mutations
+											<ul>
+												<li>No guaidance, so we build our own system</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							Use storybook for components
+							<ul>
+								<li>Help iterate quickly</li>
+								<li>Split to container and graphql components
+									<ul>
+										<li>While backend is not ready programmers can create components and know which data components needed</li>
+									</ul>
+								</li>
+								<li>Also non-programers can see components and it’s variants</li>
+								<li>We have requirment to use “CC Panels” separately, and storybook helps</li>
+							</ul>
+						</li>
+					</ul>
+				</aside>
+			</section>
+
+			<section>
+				<h2>Live coding, samples</h2>
+				<ul>
+					<li class="fragment grow visible">Basic query and mutation</li>
+					<li class="fragment grow visible">Add subscription</li>
+					<li class="fragment grow visible">Basic react component</li>
+					<li class="fragment grow visible">React component with subscription</li>
+					<li class="fragment grow visible">Show end result</li>
+				</ul>
+				<aside class="notes">
+					Basic query and mutation
+						- add filter and it can be custom
+						- add new query
+						- add basic mutation 
 					
-					<aside class="notes">
-						Note Netflix/falcor.
-					</aside>
-				</section>
+					Add subscription
+						- add packages
+						- add server
+						- modify schema
+						
+					Prepare showing of endresult
+				</aside>
+			</section>
 
-				<section>
-					<section>
-						<h3>Základní charakteristika</h3>
+			<section>
+				<h2>Troubles</h2>
+				<ul>
+					<li class="fragment">Caching</li>
+					<li class="fragment">Authorizations</li>
+					<li class="fragment">Apollo client internals
 						<ul>
-								<li>NewAge API 😀</li>
-								<li>StrongTyped</li>
-								<li>DB/Data source independent</li>
-								<li>GraphQL servers are available for all major languages</li>
+							<li>Data “normalization”</li>
+							<li>Set correct keys</li>
 						</ul>
-					</section>
-						<section>
-							<h3>Allows clients to dictate what data is needed</h3>
-						</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>RestAPI problems</h3>
-						<ol>
-							<li>multiple requests</li>
-							<li>overfetching</li>
-							<li>documentation</li>
-							</ul>
-							</li>
-							<li>realtime (websockets)</li>
-						</ol>
-					</section>
-
-					<section>
-						<h3>#1 multiple requests</h3>
-						<p>Je možné skládat více dotazů do jednoho</p>
-					</section>
-
-					<section>
-						<h3>#2 overfetching</h3>
-						<p>Kient si může vybrat které data chce</p>
-					</section>
-
-					<section>
-						<h3>#3 documentation</h3>
-						<p>
-							Api je dokumentované pomocí typů a komentářů
-						</p>
-						<p>Protože si klient vybírá, jaké data chce není tak velká potřeba api verzovat</p>
-					</section>
-
-					<section>
-						<h3>#4 realtime<br />
-							subscriptions</h3>
-						<p>
-							Je možné se přihlásit k odběru dat pomocí websockets
-						</p>
-					</section>
-				</section>
-
-				<section>
-					<h3>Firmy využívající graphQL</h3>
-					<ul>
-						<li>Twitter, GitHub, Facebook, Ipex 😎</li>
-						<li><a href='http://graphql.org/users/'>reference na webu</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>IPEX way to graphQL</h2>
-					<ol>
-						<li class="fragment">Internal workshop</li>
-						<li class="fragment">Basic skeleton tested using GraphiQL</li>
-						<li class="fragment">Subscriptions</li>
-						<li class="fragment">Use storybook for components</li>
-						<li class="fragment">Win</li>
-					</ol>
-
-					<aside class="notes">
+					</li>
+					<li class="fragment">Subscriptions monitoring
 						<ul>
 							<li>
-								Internal workshop - graphql or native rethingdb client
-								<ul>
-									<li>We like graphql</li>
-									<li>Rethinkdb future is hmm…</li>
-								</ul>
-							</li>
-							<li>
-								Create basic skeleton of first functions
-								<ul>
-									<li>Velký důraz na mutace</li>
-									<li>Different clients to different instances</li>
-									<li>Try graphql in graphiql</li>
-									<li>It helps backend developers try what they do</li>
-								</ul>
-							</li>
-							<li>
-								Subscriptions
-								<ul>
-									<li>Not much used, but critical for us</li>
-									<li>2 options
-										<ul>
-											<li>Notify “data is changed only”
-												<ul>
-													<li>Simple but “slower” and can cause trouble for backend for too many requests</li>
-												</ul>
-											</li>
-											<li>Send data with mutations
-												<ul>
-													<li>No guaidance, so we build our own system</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>
-								Use storybook for components
-								<ul>
-									<li>Help iterate quickly</li>
-									<li>Split to container and graphql components
-										<ul>
-											<li>While backend is not ready programmers can create components and know which data components needed</li>
-										</ul>
-									</li>
-									<li>Also non-programers can see components and it’s variants</li>
-									<li>We have requirment to use “CC Panels” separately, and storybook helps</li>
-								</ul>
-							</li>
+								<a href='https://www.npmjs.com/package/debug'>Debug</a> library helps</li>
 						</ul>
-					</aside>
-				</section>
+					</li>
+				</ul>
+			</section>
 
-				<section>
-					<h2>Troubles</h2>
-					<ul>
-						<li class="fragment">Caching</li>
-						<li class="fragment">Authorizations</li>
-						<li class="fragment">Apollo client internals
-							<ul>
-								<li>Data “normalization”</li>
-								<li>Set correct keys</li>
-							</ul>
-						</li>
-						<li class="fragment">Subscriptions monitoring
-							<ul>
-								<li><a href='https://www.npmjs.com/package/debug'>Debug</a> library helps</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
+			<section>
+				<h2>Hidden features</h2>
+				<ul>
+					<li>Different schemas</li>
+					<li>Input validation</li>
+					<li>Declarativní zápis jaké data komponenta potřebuje</li>
+					<li>
+						<strong>“Remove complexity while building frontend clients”</strong>
+					</li>
+				</ul>
+			</section>
 
-				<section>
-						<h2>Hidden features</h2>
-						<ul>
-								<li>Different schemas</li>
-								<li>Input validation</li>
-								<li>Declarativní zápis jaké data komponenta potřebuje</li>
-								<li><strong>“Remove complexity while building frontend clients”</strong></li>
-						</ul>
-				</section>
-
-				<!-- <section>
+			<!-- <section>
 					<h2>Problémy graphQL</h2>
 					<ul>
 							<li>relativně "mladá" technologie</li>
@@ -230,70 +277,90 @@
 							</li>
 					</ul>
 				</section> 
-
-				<section>
-					<h2>Tools</h2>
-					<ul>
-						<li><a href='https://github.com/graphql/graphiql'>Graph<em>i</em>QL</a></li>
-						<li><a href='https://altair.sirmuel.design'>Altair GraphQL Client</a></li> 
-						<li>Apollo client, <a href='https://github.com/apollographql/apollo-client-devtools'>Apollo client devtools</a></li>
-						<li><a href='https://github.com/postgraphql/postgraphql'>postgraphql</a></li>
-					</ul>
-				</section>
 				-->
 
-				<section>
-					<h2>Advanced features Apollo 2.0</h2>
-					<ul>
-						<li>Query rest, compose requests</li>
-						<li>Client-side state management</li>
-					</ul>
-				</section>
+			<section>
+				<h2>Advanced features Apollo 2.0</h2>
+				<ul>
+					<li>Query rest, compose requests</li>
+					<li>Client-side state management</li>
+				</ul>
+			</section>
 
-				<section>
-					<h3>Stojí to za to?</h3>
-					<ul>
-						<li>as always - it depend on project</li>
-						<li>in our case yes</li>
-						<li>...but you should try it</li>
-					</ul>
-				</section>
+			<section>
+				<h2>Sample of advanced features</h2>
+				<p>If time permits</p>
+				<ul>
+					<li>Using graphQL for rest</li>
+					<li>Using graphql for local storage</li>
+					<li>Custom resolvers</li>
+				</ul>
+			</section>
 
-				<section>
-					<h2>Děkuji za pozornost</h2>
-                    <p>Otázky?</p>
-                    <br />
-					<h4>Petr Šnobelt <br /> petr.snobelt@gmail.com <br /> @petrsnobelt</h4>
-				</section>
-			</div>
+			<section>
+				<h3>Stojí to za to?</h3>
+				<ul>
+					<li>as always - it depend on project</li>
+					<li>in our case yes</li>
+					<li>...but you should try it</li>
+				</ul>
+			</section>
 
+			<section>
+				<h3>Resources</h3>
+				<h4>Articles</h4>
+				<ul>
+					<li><a href='https://dev-blog.apollodata.com/2017-the-year-in-graphql-124a050d04c6'>2017: The year in GraphQL</a></li>
+					<li><a href='https://dev-blog.apollodata.com/the-future-of-state-management-dd410864cae2'>The future of state management</a></li>
+					<li><a href='https://dev-blog.apollodata.com/apollo-client-2-0-beyond-graphql-apis-888807b53afe'>Apollo Client 2.0: Beyond GraphQL APIs</a></li>
+				</ul>
+				<h4>Tools</h4>
+				<ul>
+					<li><a href='https://github.com/graphql/graphiql'>Graph<em>i</em>QL</a></li>
+					<li><a href='https://altair.sirmuel.design'>Altair GraphQL Client</a></li> 
+					<li>Apollo client, <a href='https://github.com/apollographql/apollo-client-devtools'>Apollo client devtools</a></li>
+					<li><a href='https://github.com/postgraphql/postgraphql'>postgraphql</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Děkuji za pozornost</h2>
+				<p>Otázky?</p>
+				<br />
+				<h4>Petr Šnobelt
+					<br /> petr.snobelt@gmail.com
+					<br /> @petrsnobelt</h4>
+			</section>
 		</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+	</div>
 
-		<script>
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+	<script>
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-		</script>
-	</body>
+			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+			// Optional libraries used to extend on reveal.js
+			dependencies: [
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+			]
+		});
+	</script>
+</body>
+
 </html>
