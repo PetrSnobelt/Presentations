@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Reason Ml</title>
+
+	<meta name="author" content="Petr Šnobelt">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.css" id="theme">
+
+	<link rel="shortcut icon" href="https://reasonml.github.io/favicon.ico">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+	</script>
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<div class="slides">
+			<section data-background-color="white">
+				<header alt="ReasonML">
+					<img src="https://reasonml.github.io/img/reason.svg" style="border:none" />
+				</header>
+					<blockquote class="fragment">
+					Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript & OCaml ecosystems.
+					</blockquote>
+				<p>
+					<small>
+						<a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> |
+						<a href="http://twitter.com/petrsnobelt">@petrsnobelt</a>
+					</small>
+				</p>
+			</section>
+
+
+			<section>
+				<h2>
+						<img src="https://ucarecdn.com/818e173e-4d3f-4aae-ad26-70a8d4b00ddd/"
+						style="border:none;box-shadow:none" height="100" align="right" /> oCaml
+				</h2>
+				<ul>
+					<li>ML based language</li>
+					<li>Strong static type system with type inference</li>
+					<li>Functional and immutable by default</li>
+					<li>pattern matching</li>
+					<li>First prototype of React was written in SML</li>
+					<li>Long history</li>
+					<li>Garbage collected</li>
+				</ul>
+			</section>
+
+			<section>
+					<h2>REASON IS...</h2>
+					<ul>
+						<li>📝 New syntax for OCaml</li>
+						<li>🌊 Compiler workflow</li>
+						<li>🛁 Docs, libs, utils</li>
+					</ul>
+			</section>
+
+			<section>
+				<h2>Notes</h2>
+				<ul>
+					<li>Compiles to JS, openGL, WebAssembly, Microkernels</li>
+					<li>50% FB messanger is written in reasonML</li>
+					<li>Strong support for React (JSX is supported)</li>
+					<li><a href="https://reasonml.github.io/docs/en/syntax-cheatsheet.html">Syntax Cheatsheet</a></li>
+					<li>Variants</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>What is not so great</h2>
+				<ul>
+					<li>Generation of binding to js</li>
+					<li>Missing operator overload
+						<ul>
+							<li>+ for int</li>
+							<li>^ for string</li>
+							<li>+. for float</li>
+							<li>similar for fns</li>
+						</ul>
+					</li>
+					<li>Documentation is on multiple places</li>
+					<li>Working with non-reason is unpleasant</li>
+				</ul>
+			</section>
+
+
+			<section>
+				<h2>Links</h2>
+				<ul>
+					<li>https://reasonml.github.io/</li>
+					<li>https://github.com/vramana/awesome-reasonml</li>
+					<li>https://marcelcutts.github.io/reason-react-talk/</li>
+				</ul>
+				<p>Hint: google for "ReasonML"</p>
+			</section>
+
+			<section>
+				<h2>Questions</h2>
+				<br />
+				<h4>Petr Šnobelt
+					<br /> petr.snobelt@gmail.com
+					<br /> @petrsnobelt</h4>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+
+	<script>
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+			// Optional libraries used to extend on reveal.js
+			dependencies: [
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+			]
+		});
+	</script>
+</body>
+
+</html>
