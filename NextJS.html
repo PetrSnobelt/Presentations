@@ -1,0 +1,243 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Next.JS</title>
+
+	<meta name="author" content="Petr Šnobelt">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.css" id="theme">
+
+	<link rel="shortcut icon" href="http://graphql.org/img/favicon.png" />
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+	</script>
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<div class="slides">
+			<section data-background-color="white">
+				<header alt="Next.JS">
+					<svg xmlns="http://www.w3.org/2000/svg" width="410" height="250" viewBox="0 0 82 50">
+						<path d="M19.44 13.053h15.475v1.232H20.86v9.278h13.218v1.232H20.859v10.186h14.217v1.233H19.44V13.053zm16.861 0h1.645l7.286 10.185 7.447-10.185L62.809.115 46.166 24.309l8.575 11.905h-1.708l-7.802-10.835-7.834 10.835H35.72l8.64-11.905-8.06-11.256zm19.054 1.232v-1.232H72.99v1.232h-8.125v21.929h-1.418V14.285h-8.092zM.08 13.053h1.773l24.45 36.668L16.2 36.214 1.564 14.804l-.065 21.41H.081V13.053zm72.766 21.556a.502.502 0 0 1-.507-.516c0-.29.217-.516.507-.516a.5.5 0 0 1 .507.516.5.5 0 0 1-.507.516zm1.394-1.357H75c.01.412.31.689.752.689.493 0 .773-.298.773-.855v-3.532h.772v3.535c0 1.004-.58 1.582-1.538 1.582-.9 0-1.518-.56-1.518-1.42zm4.067-.045h.766c.066.474.528.775 1.194.775.621 0 1.077-.322 1.077-.765 0-.38-.29-.61-.95-.765l-.641-.156c-.9-.21-1.311-.647-1.311-1.381 0-.89.724-1.482 1.811-1.482 1.011 0 1.75.592 1.794 1.433h-.752c-.072-.46-.472-.747-1.052-.747-.61 0-1.018.294-1.018.744 0 .357.262.56.911.713l.549.135c1.02.24 1.442.655 1.442 1.406 0 .955-.739 1.554-1.919 1.554-1.104 0-1.845-.57-1.9-1.464z"></path>
+					</svg>
+				</header>
+				<h3 class="fragment">is a lightweight framework for static and server-rendered applications.</h3>
+				<p>
+					<small>
+						<a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> |
+						<a href="http://twitter.com/petrsnobelt">@petrsnobelt</a>
+					</small>
+				</p>
+			</section>
+
+			<section>
+				<h2>Agenda</h2>
+				<ul>
+					<li>Co to je, k čemu to je a případně jak se to liší od ostatních</li>
+					<li>Proč si vybrat next</li>
+					<li>Zajímavé examply</li>
+					<li>Příklad/Live Coding?</li>
+					<li>Discussion</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Next.js info</h2>
+				<ul>
+					<li>Developed by zeit</li>
+					<li><a href="https://github.com/zeit/next.js/releases/tag/1.0.0">
+						Initial public release in 25 Oct 2016</a></li>
+					<li>opensource</li>
+					<li>current release 6.0.1 (May 11, 2018)</li>
+					<li>
+						<ul>
+							<li><a href='https://github.com/zeit/next.js'>https://github.com/zeit/next.js</a></li>
+							<li><a href='https://nextjs.org'>https://nextjs.org</a></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h1>Reasons to choose next.js</h1>
+				</section>
+				<section>
+					<h3>Great company “zeit" behind it</h3>
+					<ul>
+						<li>founder “Guillermo Rauch” (socket.io)</li>
+						<li>They have business model around it - now…</li>
+						<li>https://zeit.co/about</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Great project</h3>
+					<ul>
+						<li>6 versions so far, minimal api changes</li>
+						<li>25 164 🌟stars - GitHub</li>
+						<li>Continuous development</li>
+						<li>Lot of examples</li>
+						<li><a href="http://learnnextjs.com/">LearnNextJs.com</a> for beginners</li>
+						<li>Active github/community (<a href="https://spectrum.chat/next-js">spectrum.chat</a>)</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Can be used with different servers or static export</h3>
+					<ul>
+						<li>Koa, hapi, Fastify, express…</li>
+						<li>As start you can export to static file and host anywhere</li>
+						<li class="fragment">for example on Github pages</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Include nice “tricks”</h3>
+					<ul>
+						<li><abbr title="Server Side Rendering">SSR</abbr> out of the box with
+							<a href="https://github.com/zeit/next.js#fetching-data-and-component-lifecycle">
+								getInitialProps
+							</a>
+						</li>
+						<li>_document, _app (_app introduced in v6) </li>
+						<li>Every page is “Webpack endpoint”</li>
+						<li>Link prefetching</li>
+						<li>Dynamic import</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Not reinvent the wheel</h3>
+					<ul>
+						<li><a href="https://hackernoon.com/next-js-razzle-cra-why-you-should-use-them-for-a-next-project-a78d320de97f">
+							Please do not write another react boilerplate</a></li>
+						<li>Join community and help improve Next.js</li>
+					</ul>
+				</section>
+				<section>
+					<h3><a href="https://spectrum.chat/thread/e425a8b6-c9cb-4cd1-90bb-740fb3bd7541">
+						Notable companies using Next.js
+					</a></h3>
+					<ul>
+						<li>Netflix, GitHub, Avocode</li>
+						<li><a href="https://nextjs.org/showcase">Showcase</a></li>
+					</ul>
+				</section>
+			</section>
+
+
+
+			<section>
+				<section>
+				<h3><a href="https://github.com/zeit/next.js/tree/master/examples">Examples</a> I/II.</h3>
+				<ol>
+					<li class="fragment">stars</li>
+					<li class="fragment">custom server</li>
+					<li class="fragment">static export</li>
+					<li class="fragment"><abbr title="GitHub">gh</abbr> pages</li>
+					<li class="fragment">with inferno (preact) instead of react</li>
+					<li class="fragment">and design, aphrodite, fela, glamorous<br>
+						material-ui, styled-components, style-jsx
+					</li>
+				</ol>
+			</section>
+			<section>
+					<h3><a href="https://github.com/zeit/next.js/tree/master/examples">Examples</a> II/II</h3>
+					<ol>
+						<li class="fragment">redux, mobx, mobx-state-tree</li>
+						<li class="fragment">apollo, firebase</li>
+						<li class="fragment">electron, pkg</li>
+						<li class="fragment">flow, typescript</li>
+						<li class="fragment">jest (storybook)</li>
+						<li class="fragment">ReasonML</li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<h3>Our setup</h3>
+				<ul class="task-list" dir="auto">
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/custom-server-fastify" rel="nofollow noreferrer noopener" target="_blank">fastify</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-absolute-imports" rel="nofollow noreferrer noopener" target="_blank">absolute imports</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-flow" rel="nofollow noreferrer noopener" target="_blank">flow</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-styled-components" rel="nofollow noreferrer noopener" target="_blank">styled-components</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-static-export" rel="nofollow noreferrer noopener" target="_blank">static export</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-apollo" rel="nofollow noreferrer noopener" target="_blank">apollo</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-jest" rel="nofollow noreferrer noopener" target="_blank">jest</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-dotenv" rel="nofollow noreferrer noopener" target="_blank">dotenv</a>
+					</li>
+					<li class="task-list-item">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-sentry" rel="nofollow noreferrer noopener" target="_blank">sentry</a>
+					</li>
+					<li class="task-list-item" title="(included in later versions automatically)">
+						<a href="https://github.com/zeit/next.js/tree/canary/examples/with-webpack-bundle-analyzer" rel="nofollow noreferrer noopener" target="_blank">webpack-bundle-analyzer</a>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Questions</h2>
+				<br />
+				<h4>Petr Šnobelt
+					<br /> petr.snobelt@gmail.com
+					<br /> @petrsnobelt</h4>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+
+	<script>
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+			// Optional libraries used to extend on reveal.js
+			dependencies: [
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+			]
+		});
+	</script>
+</body>
+
+</html>
