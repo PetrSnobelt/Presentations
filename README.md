@@ -1,10 +1,12 @@
 # Petr's presentations
 
+## Next.JS
+https://petrsnobelt.github.io/Presentations/NextJS.html
 
 ## GraphQL
-https://petrsnobelt.github.io/Presentations/GraphQL.html  
-github repo with samples https://github.com/PetrSnobelt/graphql-samples  
-youtube video from older version https://www.youtube.com/watch?v=iUu7JmKgFYU  
+https://petrsnobelt.github.io/Presentations/GraphQL.html
+github repo with samples https://github.com/PetrSnobelt/graphql-samples
+youtube video from older version https://www.youtube.com/watch?v=iUu7JmKgFYU
 
 ## Older presentations for tkalci.cz
  * Backend as a service [https://petrsnobelt.github.io/Presentations/baas.htm]
