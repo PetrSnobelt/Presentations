@@ -1,5 +1,8 @@
 # Petr's presentations
 
+## FP
+https://petrsnobelt.github.io/Presentations/FP.html
+
 ## ReasonML notes
 https://petrsnobelt.github.io/Presentations/ReasonML.html
 

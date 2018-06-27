@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Functional programming</title>
+
+	<meta name="author" content="Petr Šnobelt">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.css" id="theme">
+
+	<!-- <link rel="shortcut icon" href="https://reasonml.github.io/favicon.ico"> -->
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+	</script>
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<div class="slides">
+			<section data-background-color="white">
+				<header alt="Functional Programming">
+					<img src="https://juan-medina.com/assets/img/Functional-Prog.png" style="border:none" width="50%" />
+				</header>
+				<p>
+					<small>
+						<a href="mailto:petr.snobelt@gmail.com">Petr Šnobelt</a> |
+						<a href="http://twitter.com/petrsnobelt">@petrsnobelt</a>
+					</small>
+				</p>
+			</section>
+
+			<section data-background-color="white">
+				<header alt="Functional Programming">
+					<img src="https://cdn-images-1.medium.com/max/2000/1*AM83LP9sGGjIul3c5hIsWg.png" style="border:none" />
+				</header>
+				<p>
+						My way to functional programming
+				</p>
+			</section>
+
+			<section>
+				<img src="fp/FP.png" />
+			</section>
+
+			<section>
+				<img src="fp/OOP.png" width="90%" />
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					## languages
+					- Haskel
+					- Clojure
+					- ReasonML (OCaml)
+					- Elm
+					- Scala, Kotlin
+					- F#
+					- C# 🤔 <!-- .element: class="fragment" -->
+					- JS 😱🙈😋 <!-- .element: class="fragment"  -->
+				</script>
+			</section>
+
+			<section>
+				<section data-markdown>
+					<script type="text/template">
+						## strongType vs weakType
+						- Strong: Elm, Reason, Haskel,
+						- Weak: JS, Python, Clojure
+						- Js with types: TypeScript, FlowTypes
+						- Difference between inside only and interaction with outer world (Json > GraphQL)
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						### Types are not classes
+						- Compare by value vs by reference
+						- Consider using struct in c#
+					</script>
+				</section>
+			</section>
+
+			<section>
+					<h2>Procedural programming</h2>
+					<blockquote class="fragment"><small>
+							<a href="https://stackoverflow.com/questions/23277/what-is-the-difference-between-procedural-programming-and-functional-programming">
+						Procedural languages tend to keep track of state (using variables) and tend to execute as a sequence of steps.
+						<br />
+						<br />
+						Purely functional languages don't keep track of state, use immutable values, and tend to execute as a series of dependencies.
+					</a>
+					</small>
+				</blockquote>
+			</section>
+
+			<section
+				data-background-image="fp/Dijkstra-vs-AlanKey.png"
+				data-background-size="80%"
+			></section>
+
+			<section data-markdown>
+				<script type="text/template">
+					### Variables
+					- There are no variables in FP, all wariables should be considered as constants
+					- In JS - ImmutableJS or {...prevprops, newprop}
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					### Pure functions
+					- Act ONLY based on input parameters
+					- Will ALWAYS produce same output for same input
+					- Can be memoized
+					- Have NO SIDEEFFECTS
+				</script>
+			</section>
+
+			<section>
+				<img src="fp/PureFunction.png" width="90%" />
+			</section>
+
+			<section>
+				<h2>Links</h2>
+				<ul>
+					<li>https://reasonml.github.io/</li>
+					<li>https://github.com/vramana/awesome-reasonml</li>
+					<li>https://marcelcutts.github.io/reason-react-talk/</li>
+				</ul>
+				<p>Hint: google for "ReasonML"</p>
+			</section>
+
+			<section>
+				<h2>Questions</h2>
+				<br />
+				<h4>Petr Šnobelt
+					<br /> petr.snobelt@gmail.com
+					<br /> @petrsnobelt</h4>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+
+	<script>
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+			// Optional libraries used to extend on reveal.js
+			dependencies: [
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+				{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+			]
+		});
+	</script>
+</body>
+
+</html>
