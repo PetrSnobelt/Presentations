@@ -58,6 +58,10 @@
 				<img src="fp/OOP.png" width="90%" />
 			</section>
 
+			<section>
+				<img src="fp/SolidvsFP.png" width="90%" />
+			</section>
+
 			<section data-markdown>
 				<script type="text/template">
 					## languages
@@ -67,7 +71,7 @@
 					- Elm
 					- Scala, Kotlin
 					- F#
-					- C# 🤔 <!-- .element: class="fragment" -->
+					- C# 🤔 (LINQ) <!-- .element: class="fragment" -->
 					- JS 😱🙈😋 <!-- .element: class="fragment"  -->
 				</script>
 			</section>
@@ -110,10 +114,19 @@
 			></section>
 
 			<section data-markdown>
+					<script type="text/template">
+						## CORE/BASIC concepts of FP
+					</script>
+				</section>
+
+			<section data-markdown>
 				<script type="text/template">
 					### Variables
 					- There are no variables in FP, all wariables should be considered as constants
-					- In JS - ImmutableJS or {...prevprops, newprop}
+					- In JS - ImmutableJS, <a href="https://ramdajs.com">Ramda</a> or at least
+							const newState = {...prevprops, newprop}
+							const newArray = [].concat(arr, val)
+					- On Web - concept of Om Atom/SingleStore (Redux)
 				</script>
 			</section>
 
@@ -131,18 +144,89 @@
 				<img src="fp/PureFunction.png" width="90%" />
 			</section>
 
-			<section>
-				<h2>Links</h2>
-				<ul>
-					<li>https://reasonml.github.io/</li>
-					<li>https://github.com/vramana/awesome-reasonml</li>
-					<li>https://marcelcutts.github.io/reason-react-talk/</li>
-				</ul>
-				<p>Hint: google for "ReasonML"</p>
+			<section data-markdown>
+				<script type="text/template">
+					### Function as First class citizen
+					- Can be used as parameter
+					- Standalone thing, not attached to a class (module contain functions)
+							// Watch signature, no difference
+							const a = 1
+							const add = (a, b) => a + b
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					### Decorator pattern in FP
+					- Not a very good example, console.log in not pure
+							const loggingDecorator = (wrapped) => {
+								return function() {
+									console.log('Starting');
+									const result = wrapped.apply(this, arguments);
+									console.log('Finished');
+									return result;
+								}
+							}
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					- Currying (Partial application)
+							const add = a => b => a + b
+							const add10 = add(10)
+							console.log(add10(1)) //11
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					### Common functional functions
+					- For collections
+						- map, filter, reduce (fold)
+						- [Transducers](https://medium.com/@roman01la/understanding-transducers-in-javascript-3500d3bd9624)
+					- Lodash/FP, Ramda
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					### Other used patterns
+					- Pattern matching 🤨
+					- Destructuring assignment
+							const printCustomerName = ({firstName, lastName}) =>
+							console.log(`${firstName} ${lastName}`)
+							printCustomerName(customer)
+					- Composition
+					- Recursion
+					- use `map` instead of `for`
+				</script>
 			</section>
 
 			<section>
-				<h2>Questions</h2>
+				<h2>The main idea:</h2>
+				<h1>“Separate data from behavior“</h1>
+				<h3>🔥</h3>
+			</section>
+
+			<section>
+				<h2>GOL in FP JS</h2>
+				<h3>🤩</h3>
+			</section>
+
+			<section data-markdown>
+					<script type="text/template">
+						### Sources
+						- [fp-patterns](https://www.slideshare.net/ScottWlaschin/fp-patterns-buildstufflt) ❤️
+							- [video](https://www.youtube.com/watch?v=E8I19uA-wGY) please watch (at least first part)
+						- [Two Years of Functional Programming in JavaScript: Lessons Learned](https://hackernoon.com/two-years-of-functional-programming-in-javascript-lessons-learned-1851667c726)
+							- contain links to other sources
+						- [How js evolve to fp](https://www.sitepoint.com/lodash-features-replace-es6/)
+					</script>
+				</section>
+
+			<section>
+				<h2>Thank you</h2>
 				<br />
 				<h4>Petr Šnobelt
 					<br /> petr.snobelt@gmail.com
