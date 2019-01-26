@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>CI</title>
+
+    <meta name="author" content="Petr Šnobelt" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.css"
+      id="theme"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="https://nextjs.org/static/favicon/favicon.ico"
+    />
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write(
+        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/' +
+          (window.location.search.match(/print-pdf/gi) ? "pdf" : "paper") +
+          '.css" type="text/css" media="print">'
+      );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background-color="white">
+          <header alt="Next.JS">Continuous Intergation</header>
+          <h3 class="fragment">
+            help us make code clean, secure and error free
+          </h3>
+          <p>
+            <small>
+              <a href="mailto:petr.snobelt@kiwi.com">Petr Šnobelt</a> |
+              <a href="http://twitter.com/petrsnobelt">@petrsnobelt</a>
+            </small>
+          </p>
+        </section>
+
+        <section>
+          <h2>CI in kiwi.com</h2>
+          <h3>in general</h3>
+          <ul>
+            <li class="fragment">Run on GitLab (private projects) or GitHub</li>
+            <li class="fragment">Build app (sometimes build docker)</li>
+            <li class="fragment">Check for errors</li>
+            <li class="fragment">Check for problems (security, naming etc.)</li>
+            <li class="fragment">Release every branch</li>
+            <li class="fragment">Run UI tests on it</li>
+            <li class="fragment">Allow release master to production</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>CI checks</h2>
+          <h3>in detail</h3>
+          <ul>
+            <li class="fragment">node security</li>
+            <li class="fragment">eslint</li>
+            <li class="fragment">coala</li>
+            <li class="fragment">flow</li>
+            <li class="fragment">unit tests</li>
+            <li class="fragment">test bundle size</li>
+            <li class="fragment">Cypress tests after deploy</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Basic sample for opensource project on GitHub</h2>
+          <ul>
+            <li>Uses <a href="https://circleci.com/">CircleCI</a></li>
+            <li>
+              <a
+                href="https://github.com/kiwicom/orbit-components/blob/master/.circleci/config.yml"
+              >
+                Can be found in orbit-components</a
+              >
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Questions</h2>
+          <br />
+          <h4>
+            Petr Šnobelt <br />
+            petr.snobelt@kiwi.com <br />
+            @petrsnobelt
+          </h4>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || "concave", // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          {
+            src:
+              "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js",
+            condition: function() {
+              return !document.body.classList;
+            }
+          },
+          {
+            src:
+              "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          },
+          {
+            src:
+              "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          {
+            src:
+              "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
