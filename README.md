@@ -2,7 +2,7 @@
 
 ## JS Weekend
 
-https://petrsnobelt.github.io/Presentations/JS-Weekend-NextJS.html
+https://petrsnobelt.github.io/Presentations/JS-Weekend-NextJS.html  
 https://petrsnobelt.github.io/Presentations/JS-Weekend-CI.html
 
 ## FP
