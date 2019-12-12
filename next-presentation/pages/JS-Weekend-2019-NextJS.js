@@ -226,7 +226,7 @@ const NextPresentation = ({ stars, release }) => (
               You can extend build in webpack configuration
             </li>
             <li className="fragment">
-              CDN deployment ready (Continuous delivery)
+              CDN deployment ready (Continuous Delivery)
             </li>
             <li className="fragment">AMP support</li>
             <li className="fragment">
